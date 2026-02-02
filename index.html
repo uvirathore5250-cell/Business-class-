@@ -3,107 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ELITE BUSINESS STUDIO</title>
+    <title>Elite Business Studio</title>
     <style>
         :root { 
-            --gold: #c6a357; 
+            --gold: #d4af37; 
             --bg: #000000; 
-            --box-white: #ffffff; 
+            --white: #ffffff; 
         }
         
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, sans-serif; }
         
-        body { background: var(--bg); color: #fff; padding-top: 60px; }
+        body { background: var(--bg); color: #fff; padding: 20px; }
 
-        /* Navigation Style from Screenshot */
+        /* Top Nav from your Screenshot */
         header {
-            background: #000; padding: 25px 4%;
             display: flex; justify-content: space-between; align-items: center;
-            position: fixed; top: 0; width: 100%; z-index: 1000;
+            padding: 20px 10px; margin-bottom: 30px;
         }
-        .logo { color: var(--gold); font-weight: 700; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1.5px; }
-        nav { display: flex; gap: 12px; }
-        .nav-link { border: 1px solid #333; color: var(--gold); padding: 5px 15px; border-radius: 6px; font-size: 10px; text-transform: uppercase; font-weight: 700; cursor: pointer; }
+        .brand { color: var(--gold); font-weight: 700; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 1px; }
+        .nav-items { display: flex; gap: 15px; }
+        .btn-nav { border: 1px solid #333; color: var(--gold); padding: 6px 16px; border-radius: 8px; font-size: 11px; font-weight: 700; text-transform: uppercase; }
 
-        .wrapper { max-width: 1200px; margin: 0 auto; padding: 30px; }
+        .content-wrapper { max-width: 1100px; margin: 0 auto; }
 
-        /* Top Hero Section */
-        .hero-section { display: grid; grid-template-columns: 1.3fr 1fr; gap: 35px; margin-bottom: 40px; }
+        /* Main Grid: Gold Banner & White Card */
+        .main-hero { display: grid; grid-template-columns: 1.3fr 1fr; gap: 25px; margin-bottom: 40px; }
         
-        /* Gold Banner Box */
-        .banner-gold { 
-            background: #e3c16a; color: #000; 
-            padding: 50px 45px; border-radius: 20px; 
+        .gold-banner { 
+            background: #e6c56c; color: #000; 
+            padding: 50px 40px; border-radius: 25px; 
             display: flex; flex-direction: column; justify-content: center;
         }
-        .banner-gold small { font-weight: 800; text-transform: uppercase; font-size: 10px; letter-spacing: 1px; margin-bottom: 8px; }
-        .banner-gold h1 { font-size: 2.4rem; line-height: 1.1; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 12px; }
-        .banner-gold p { font-size: 14px; font-weight: 500; margin-bottom: 25px; }
-        .cta-btn { background: #000; color: var(--gold); border: none; padding: 14px 24px; font-weight: 800; border-radius: 8px; font-size: 10px; text-transform: uppercase; cursor: pointer; width: fit-content; }
+        .gold-banner h2 { font-size: 2.2rem; font-weight: 800; line-height: 1.1; margin: 10px 0; letter-spacing: -1px; }
+        .gold-banner p { font-size: 14px; font-weight: 500; }
+        .btn-recover { background: #000; color: var(--gold); border: none; padding: 14px 24px; font-weight: 800; border-radius: 10px; margin-top: 25px; cursor: pointer; width: fit-content; font-size: 11px; text-transform: uppercase; }
 
-        /* White Quarterly Box */
+        /* The White Quarterly Card */
         .white-card { 
-            background: var(--box-white); color: #000; 
-            padding: 40px; border-radius: 28px; /* Ultra rounded as per image */
-            position: relative; box-shadow: 0 15px 40px rgba(255,255,255,0.05);
+            background: var(--white); color: #000; 
+            padding: 45px 40px; border-radius: 30px; /* Specific round corners from pic */
+            position: relative;
         }
-        .badge-sought { background: #e3c16a; color: #000; padding: 4px 14px; border-radius: 20px; font-size: 9px; font-weight: 900; position: absolute; top: 30px; right: 30px; }
-        .card-label { font-weight: 800; font-size: 12px; color: #333; margin-bottom: 5px; }
-        .price-hero { font-size: 3.8rem; font-weight: 900; margin-bottom: 20px; letter-spacing: -2px; }
+        .sought-badge { background: #e6c56c; color: #000; padding: 5px 15px; border-radius: 20px; font-size: 9px; font-weight: 900; position: absolute; top: 35px; right: 35px; }
+        .price-text { font-size: 4rem; font-weight: 900; margin: 10px 0; letter-spacing: -2px; }
         
-        .list-items { list-style: none; }
-        .list-items li { font-size: 14px; margin-bottom: 12px; display: flex; align-items: center; gap: 12px; font-weight: 600; }
-        .list-items li::before { content: '✓'; font-weight: 900; color: #000; }
+        .features { list-style: none; margin-top: 25px; }
+        .features li { font-size: 15px; margin-bottom: 15px; font-weight: 600; display: flex; align-items: center; gap: 12px; }
+        .features li::before { content: '✓'; font-weight: 900; }
 
-        /* Middle Text Section */
-        .philosophy-row { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; margin-bottom: 40px; padding: 0 10px; }
-        .text-block { border-left: 3px solid var(--gold); padding: 5px 25px; }
-        .text-block h3 { color: var(--gold); text-transform: uppercase; margin-bottom: 12px; font-size: 1rem; font-weight: 800; }
-        .text-block p { font-size: 14px; color: #a0a0a0; line-height: 1.6; }
+        /* Text Blocks Section */
+        .info-section { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 50px; }
+        .info-block { border-left: 4px solid var(--gold); padding: 5px 25px; }
+        .info-block h4 { color: var(--gold); text-transform: uppercase; margin-bottom: 10px; font-weight: 800; }
+        .info-block p { color: #888; font-size: 14px; line-height: 1.6; }
 
-        /* Facilities White Container */
-        .facilities-container { background: var(--box-white); color: #000; padding: 50px 45px; border-radius: 30px; margin-bottom: 60px; }
-        .fac-title { color: #d4af37; text-transform: uppercase; font-size: 13px; font-weight: 800; margin-bottom: 35px; letter-spacing: 1px; }
+        /* Amenities Section - The White Block */
+        .amenities-box { background: var(--white); color: #000; padding: 50px; border-radius: 35px; margin-bottom: 30px; }
+        .amenities-box h3 { color: var(--gold); text-transform: uppercase; font-size: 14px; font-weight: 800; margin-bottom: 35px; }
         
-        .fac-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
-        .fac-box { 
-            background: #fff; padding: 22px; 
-            border-bottom: 2px solid #f0f0f0; 
-            font-size: 12px; font-weight: 800; 
-            text-transform: uppercase; text-align: center; border-radius: 4px;
-        }
+        .amenities-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+        .amenity-tag { background: #fff; padding: 20px; border-bottom: 2px solid #f0f0f0; font-size: 12px; font-weight: 800; text-transform: uppercase; text-align: center; border-radius: 4px; }
 
-        @media (max-width: 900px) {
-            .hero-section, .philosophy-row, .fac-grid { grid-template-columns: 1fr; }
+        @media (max-width: 850px) {
+            .main-hero, .info-section, .amenities-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo">Elite Business Studio</div>
-        <nav>
-            <div class="nav-link">Home</div>
-            <div class="nav-link">Facilities</div>
-            <div class="nav-link">Coaching</div>
-        </nav>
+    <header class="content-wrapper">
+        <div class="brand">Elite Business Studio</div>
+        <div class="nav-items">
+            <div class="btn-nav">Home</div>
+            <div class="btn-nav">Facilities</div>
+            <div class="btn-nav">Coaching</div>
+        </div>
     </header>
 
-    <div class="wrapper">
+    <div class="content-wrapper">
         
-        <div class="hero-section">
-            <div class="banner-gold">
-                <small>Exclusive Invitation</small>
-                <h1>LUXURY, PRIVATE,<br>POWERFUL</h1>
+        <div class="main-hero">
+            <div class="gold-banner">
+                <p style="font-weight: 800; font-size: 11px; text-transform: uppercase;">Exclusive Invitation</p>
+                <h2>LUXURY, PRIVATE,<br>POWERFUL</h2>
                 <p>Powered by TAISO Fitness</p>
-                <button class="cta-btn">Recover Your Potential</button>
+                <button class="btn-recover">Recover Your Potential</button>
             </div>
 
             <div class="white-card">
-                <span class="badge-sought">MOST SOUGHT</span>
-                <p class="card-label">QUARTERLY</p>
-                <div class="price-hero">₹89,999</div>
-                <ul class="list-items">
+                <span class="sought-badge">MOST SOUGHT</span>
+                <p style="font-weight: 800; font-size: 13px; color: #444;">QUARTERLY</p>
+                <div class="price-text">₹89,999</div>
+                <ul class="features">
                     <li>24/7 Studio Access</li>
                     <li>Private Pod Access</li>
                     <li>Members' Lounge</li>
@@ -112,34 +103,33 @@
             </div>
         </div>
 
-        <div class="philosophy-row">
-            <div class="text-block">
-                <h3>Elevate Your Fitness & Network</h3>
+        <div class="info-section">
+            <div class="info-block">
+                <h4>Elevate Your Fitness & Network</h4>
                 <p>Designed for industry leaders. Achieve your true peak with Taiso's bespoke fitness sanctuary.</p>
             </div>
-            <div class="text-block">
-                <h3>Our Philosophy</h3>
+            <div class="info-block">
+                <h4>Our Philosophy</h4>
                 <p>We provide a sanctuary for success. A private space to transform your physical and mental grit.</p>
             </div>
         </div>
 
-        <div class="facilities-container">
-            <div class="fac-title">Included in Membership</div>
-            <div class="fac-grid">
-                <div class="fac-box" style="border-bottom-color: #f2d06b;">Private Gym Access</div>
-                <div class="fac-box" style="border-bottom-color: #f2d06b;">Recovery Suites</div>
-                <div class="fac-box" style="border-bottom-color: #f2d06b;">Infrared Sauna</div>
-                <div class="fac-box" style="border-bottom-color: #f2d06b;">Cold Plunge Pool</div>
-                <div class="fac-box" style="border-bottom-color: #f2d06b;">Massage Nutrition</div>
-                <div class="fac-box" style="border-bottom-color: #f2d06b;">Mindfulness Coach</div>
+        <div class="amenities-box">
+            <h3>Included in Membership</h3>
+            <div class="amenities-grid">
+                <div class="amenity-tag" style="border-color: #f2d06b;">Private Gym Access</div>
+                <div class="amenity-tag" style="border-color: #f2d06b;">Recovery Suites</div>
+                <div class="amenity-tag" style="border-color: #f2d06b;">Infrared Sauna</div>
+                <div class="amenity-tag" style="border-color: #f2d06b;">Cold Plunge Pool</div>
+                <div class="amenity-tag" style="border-color: #f2d06b;">Massage Nutrition</div>
+                <div class="amenity-tag" style="border-color: #f2d06b;">Mindfulness Coach</div>
             </div>
         </div>
 
+        <footer style="text-align: center; padding: 60px 0; color: #444; font-size: 11px; font-weight: 700; letter-spacing: 1px;">
+            📍 BANER, PUNE &nbsp; | &nbsp; ELITE BUSINESS STUDIO © 2026
+        </footer>
     </div>
-
-    <footer style="text-align: center; padding: 80px 0; color: #333; font-size: 11px; letter-spacing: 1px; font-weight: 700;">
-        📍 BANER, PUNE &nbsp; | &nbsp; ELITE BUSINESS STUDIO © 2026
-    </footer>
 
 </body>
 </html>
