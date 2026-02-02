@@ -20,75 +20,86 @@
             color: #ffffff; 
             font-family: 'Montserrat', sans-serif;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
         /* Nav Bar */
         header {
             display: flex; justify-content: space-between; align-items: center;
-            padding: 25px 6%; background: rgba(0,0,0,0.9);
+            padding: 20px 6%; background: rgba(0,0,0,0.95);
             border-bottom: 1px solid #1a1a1a; position: sticky; top: 0; z-index: 1000;
             backdrop-filter: blur(10px);
         }
-        .logo { font-family: 'Syncopate', sans-serif; color: var(--gold); font-size: 1rem; letter-spacing: 4px; text-decoration: none; }
+        .logo-area { display: flex; flex-direction: column; }
+        .logo { 
+            font-family: 'Syncopate', sans-serif; color: var(--gold); 
+            font-size: 1.1rem; letter-spacing: 4px; text-decoration: none; 
+            margin-bottom: 4px;
+        }
+        .powered-by { 
+            font-size: 9px; color: #666; letter-spacing: 2px; 
+            text-transform: uppercase; font-weight: 800; 
+        }
+        
         nav { display: flex; gap: 20px; }
         nav a { 
             color: #fff; text-decoration: none; font-size: 10px; font-weight: 800; 
-            text-transform: uppercase; letter-spacing: 1px; cursor: pointer;
+            text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: 0.3s;
         }
         nav a:hover { color: var(--gold); }
 
-        /* Container & Page Logic */
+        /* Page Transitions */
         .page { display: none; padding: 60px 8%; min-height: 90vh; animation: fadeIn 0.8s ease; }
         .page.active { display: block; }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Hero Styling (Home) */
-        .hero { text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; height: 70vh; }
-        .hero h1 { font-family: 'Syncopate', sans-serif; font-size: clamp(1.5rem, 5vw, 3rem); color: var(--gold); margin-bottom: 20px; line-height: 1.2; }
-        .hero p { color: #888; letter-spacing: 3px; font-weight: 500; margin-bottom: 30px; }
+        /* Hero (Home) */
+        .hero { text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; height: 65vh; }
+        .hero h1 { font-family: 'Syncopate', sans-serif; font-size: clamp(1.4rem, 5vw, 2.8rem); color: var(--gold); margin-bottom: 20px; line-height: 1.2; letter-spacing: -1px; }
+        .hero p { color: #888; letter-spacing: 4px; font-weight: 500; margin-bottom: 30px; font-size: 12px; }
 
-        /* Generic Layout Classes */
+        /* Layout Grids */
         .grid-2 { display: grid; grid-template-columns: 1.3fr 1fr; gap: 30px; margin-bottom: 40px; }
-        .glass-box { background: var(--card-bg); padding: 40px; border-left: 4px solid var(--neon); border-radius: 4px; height: 100%; }
-        .glass-box h2 { color: var(--gold); font-size: 1.2rem; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 2px; }
-        .glass-box p { color: #aaa; font-size: 14px; line-height: 1.8; }
+        .glass-box { background: var(--card-bg); padding: 40px; border-left: 4px solid var(--neon); border-radius: 4px; }
+        .glass-box h2 { color: var(--gold); font-size: 1.1rem; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 2px; }
+        .glass-box p { color: #aaa; font-size: 13px; line-height: 1.8; }
 
-        /* Gold Card (Hero Feature) */
         .gold-banner {
             background: linear-gradient(145deg, #b8860b 0%, #d4af37 50%, #f2d06b 100%);
             color: #000; padding: 50px; border-radius: 8px; box-shadow: 0 20px 40px rgba(0,0,0,0.5);
         }
-        .gold-banner h2 { font-size: 2rem; font-weight: 900; letter-spacing: -1px; margin: 10px 0; }
+        .gold-banner h2 { font-size: 1.8rem; font-weight: 900; letter-spacing: -1px; margin: 10px 0; line-height: 1.1; }
 
-        /* Facility Grid */
-        .amenity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 30px; }
-        .tag { background: #1a1a1a; padding: 20px; text-align: center; border: 1px solid #222; font-size: 11px; font-weight: 800; text-transform: uppercase; color: #888; }
-
-        /* Pricing Cards */
+        /* Pricing Section */
         .price-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-        .price-card { background: var(--card-bg); padding: 50px 30px; text-align: center; border-bottom: 6px solid #333; transition: 0.4s; }
+        .price-card { background: var(--card-bg); padding: 60px 30px; text-align: center; border-bottom: 6px solid #333; transition: 0.4s; }
         .price-card:hover { border-bottom-color: var(--gold); transform: translateY(-10px); }
-        .price-card.featured { border-bottom-color: var(--gold); }
-        .price-card h4 { color: var(--gold); letter-spacing: 2px; font-size: 12px; margin-bottom: 15px; }
-        .price-card .amt { font-size: 2.5rem; font-weight: 800; margin-bottom: 10px; }
+        .price-card.featured { border-bottom-color: var(--gold); transform: scale(1.03); background: #161616; }
+        .price-card h4 { color: var(--gold); letter-spacing: 3px; font-size: 11px; margin-bottom: 15px; font-weight: 800; }
+        .price-card .amt { font-size: 2.2rem; font-weight: 800; margin-bottom: 10px; font-family: sans-serif; }
 
         .gold-btn { 
-            background: #000; color: var(--gold); border: 1px solid var(--gold); 
-            padding: 15px 35px; font-weight: 800; cursor: pointer; text-transform: uppercase; font-size: 11px;
-            margin-top: 20px;
+            background: var(--gold); color: #000; border: none; 
+            padding: 16px 40px; font-weight: 900; cursor: pointer; text-transform: uppercase; font-size: 11px;
+            margin-top: 20px; letter-spacing: 1px;
         }
-        .gold-btn:hover { background: var(--gold); color: #000; }
 
-        footer { text-align: center; padding: 80px 0; color: #333; font-size: 11px; font-weight: 800; letter-spacing: 3px; }
+        .tag-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 30px; }
+        .tag-item { background: #1a1a1a; padding: 20px; text-align: center; border: 1px solid #222; font-size: 10px; font-weight: 800; text-transform: uppercase; color: #888; }
 
-        @media (max-width: 900px) { .grid-2, .amenity-grid, .price-row { grid-template-columns: 1fr; } }
+        footer { text-align: center; padding: 80px 0; color: #444; font-size: 10px; font-weight: 800; letter-spacing: 3px; }
+
+        @media (max-width: 900px) { .grid-2, .price-row, .tag-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
     <header>
-        <a onclick="showPage('home')" class="logo">ELITE BUSINESS STUDIO</a>
+        <div class="logo-area">
+            <a onclick="showPage('home')" class="logo">ELITE BUSINESS STUDIO</a>
+            <span class="powered-by">POWERED BY TAISO FITNESS</span>
+        </div>
         <nav>
             <a onclick="showPage('home')">The Privilege</a>
             <a onclick="showPage('facilities')">Facilities</a>
@@ -101,15 +112,15 @@
         <section class="hero">
             <p>NOT A GYM. A STATEMENT.</p>
             <h1>THIS IS NOT A MEMBERSHIP.<br>THIS IS A PRIVILEGE.</h1>
-            <p style="color:var(--gold)">ZERO CROWD • TOTAL PRIVACY • ELITE CLASS ONLY</p>
-            <button class="gold-btn" onclick="showPage('membership')" style="background:var(--gold); color:#000;">Explore The Investment</button>
+            <p style="color:var(--gold); opacity: 0.8;">ZERO CROWD • TOTAL PRIVACY • ELITE CLASS ONLY</p>
+            <button class="gold-btn" onclick="showPage('membership')">Explore The Investment</button>
         </section>
 
         <div class="grid-2">
             <div class="gold-banner">
-                <p>Business Class Lifestyle</p>
+                <p style="text-transform: uppercase; font-weight: 800; font-size: 10px; letter-spacing: 1px;">Business Class Lifestyle</p>
                 <h2>LUXURY. PRIVATE. POWERFUL.</h2>
-                <p>Designed for industry leaders who value time and privacy over everything else.</p>
+                <p style="font-weight: 600; font-size: 13px; margin-top: 10px;">Designed for industry leaders who value time and privacy over everything else.</p>
             </div>
             <div class="glass-box" style="border-left-color: var(--gold);">
                 <h2>Total Exclusivity</h2>
@@ -119,66 +130,67 @@
     </div>
 
     <div id="facilities" class="page">
-        <h1 style="font-family: 'Syncopate'; color: var(--gold); margin-bottom: 40px; font-size: 1.5rem;">BUSINESS CLASS FACILITIES</h1>
+        <h1 style="font-family: 'Syncopate'; color: var(--gold); margin-bottom: 40px; font-size: 1.4rem; letter-spacing: 3px;">BUSINESS CLASS EXPERIENCE</h1>
         <div class="grid-2">
             <div class="glass-box">
                 <h2>NO NOISE. NO WAITING.</h2>
-                <p>No waiting for machines, no loud music. Your water, protein, and towels are ready before you step in. Pure efficiency.</p>
+                <p>Your water and towels are ready before you arrive. No waiting for machines, no loud noise. Pure performance efficiency.</p>
             </div>
-            <div class="glass-box">
+            <div class="glass-box" style="border-left-color: var(--gold);">
                 <h2>PRIVATE FLOOR ACCESS</h2>
-                <p>Exclusive floor access ensuring you never cross paths with anyone. A secure, imported premium environment.</p>
+                <p>Exclusive floor access ensuring complete security. A pristine environment with imported premium equipment.</p>
             </div>
         </div>
-        <div class="amenity-grid">
-            <div class="tag">Private Lockers</div>
-            <div class="tag">Imported Equipment</div>
-            <div class="tag">Recovery Suites</div>
-            <div class="tag">Zero Wait Policy</div>
-            <div class="tag">Towel & Water Ready</div>
-            <div class="tag">Priority Access</div>
+        <div class="tag-grid">
+            <div class="tag-item">Private Lockers</div>
+            <div class="tag-item">Imported Equipment</div>
+            <div class="tag-item">Recovery Suites</div>
+            <div class="tag-item">Infrared Sauna</div>
+            <div class="tag-item">Cold Plunge Pool</div>
+            <div class="tag-item">Zero Crowd Policy</div>
         </div>
     </div>
 
     <div id="coaching" class="page">
-        <h1 style="font-family: 'Syncopate'; color: var(--neon); margin-bottom: 40px; font-size: 1.5rem;">ELITE COACHING</h1>
+        <h1 style="font-family: 'Syncopate'; color: var(--neon); margin-bottom: 40px; font-size: 1.4rem; letter-spacing: 3px;">ELITE COACHING</h1>
         <div class="grid-2">
             <div class="glass-box" style="border-left-color: var(--neon);">
-                <h2 style="color: var(--neon);">DEDICATED ASSISTANT</h2>
-                <p>A dedicated personal assistant to handle your scheduling, nutrition tracking, and floor preparation.</p>
+                <h2 style="color: var(--neon);">PERSONAL ASSISTANT</h2>
+                <p>A dedicated assistant handles your scheduling, preparation, and nutrition, so you focus only on results.</p>
             </div>
             <div class="glass-box" style="border-left-color: var(--neon);">
-                <h2 style="color: var(--neon);">PRIVATE COACHING</h2>
-                <p>1-on-1 coaching by industry-best performance specialists. Totally private, totally focused on your peak.</p>
+                <h2 style="color: var(--neon);">PRIVATE 1-ON-1</h2>
+                <p>Elite performance specialists providing coaching on a private floor. Zero prying eyes, maximum focus.</p>
             </div>
         </div>
-        <div class="gold-banner" style="background: var(--card-bg); color: #fff; border: 1px solid var(--neon);">
-            <h2 style="color: var(--neon);">PRIORITY SCHEDULING</h2>
-            <p style="color: #888;">Your time is your greatest asset. We ensure zero overlaps. The floor is yours, exactly when you need it.</p>
+        <div style="background: #111; padding: 40px; border-radius: 8px; border: 1px dashed #333; text-align: center;">
+            <h2 style="color: var(--neon); font-family: 'Syncopate'; font-size: 1rem; margin-bottom: 10px;">PRIORITY SCHEDULING</h2>
+            <p style="color: #666; font-size: 13px;">Your time is your greatest asset. We ensure the floor is yours exactly when you need it.</p>
         </div>
     </div>
 
     <div id="membership" class="page">
-        <h1 style="font-family: 'Syncopate'; text-align: center; color: var(--gold); margin-bottom: 60px; font-size: 1.5rem;">SELECT YOUR STATUS</h1>
+        <h1 style="font-family: 'Syncopate'; text-align: center; color: var(--gold); margin-bottom: 60px; font-size: 1.4rem; letter-spacing: 5px;">THE INVESTMENT</h1>
         <div class="price-row">
             <div class="price-card">
-                <h4>3 MONTHS ELITE</h4>
+                <h4>3 MONTHS</h4>
                 <div class="amt">₹1,00,000</div>
-                <p style="font-size: 10px; color: #555;">STANDARD PRIVILEGE</p>
+                <p style="font-size: 10px; color: #555; font-weight: 800; letter-spacing: 1px;">ELITE ACCESS</p>
             </div>
             <div class="price-card featured">
-                <h4>3 MONTHS PREMIUM</h4>
+                <h4>6 MONTHS</h4>
                 <div class="amt">₹1,50,000</div>
-                <p style="color: var(--gold); font-size: 10px;">INCLUDES PERSONAL ASSISTANT</p>
+                <p style="color: var(--gold); font-size: 10px; font-weight: 800; letter-spacing: 1px;">MOST SOUGHT PRIVILEGE</p>
             </div>
             <div class="price-card">
-                <h4>12 MONTHS PRIVILEGE</h4>
+                <h4>12 MONTHS</h4>
                 <div class="amt">₹2,40,000</div>
-                <p style="font-size: 10px; color: #555;">FULL FLOOR ANNUAL ACCESS</p>
+                <p style="font-size: 10px; color: #555; font-weight: 800; letter-spacing: 1px;">ANNUAL EXCLUSIVITY</p>
             </div>
         </div>
-        <div style="text-align: center; margin-top: 50px;">
-            <p style="color: #555; font-size: 12px; letter-spacing: 1px;">*ADMISSION BY INVITATION ONLY</p>
+        <div style="text-align: center; margin-top: 60px;">
+            <p style="color: #444; font-size: 11px; letter-spacing: 2px;">*ADMISSION BY INVITATION ONLY</p>
+            <button class="gold-btn" style="margin-top: 30px;">Request Invitation</button>
         </div>
     </div>
 
@@ -188,14 +200,9 @@
 
     <script>
         function showPage(pageId) {
-            // Hide all pages
             const pages = document.querySelectorAll('.page');
             pages.forEach(page => page.classList.remove('active'));
-            
-            // Show selected page
             document.getElementById(pageId).classList.add('active');
-            
-            // Scroll to top
             window.scrollTo(0, 0);
         }
     </script>
