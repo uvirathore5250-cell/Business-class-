@@ -23,10 +23,9 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Particles/Sparks Background Layer */
         #sparks-canvas {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none; z-index: 0; opacity: 0.8; /* Slightly more visible */
+            pointer-events: none; z-index: 0; opacity: 0.8;
         }
 
         header {
@@ -35,6 +34,7 @@
             border-bottom: 1px solid #1a1a1a; position: sticky; top: 0; z-index: 1000;
             backdrop-filter: blur(15px);
         }
+        .logo-area { display: flex; flex-direction: column; }
         .logo { 
             font-family: 'Syncopate', sans-serif; 
             background: var(--gold-glossy);
@@ -42,11 +42,13 @@
             font-size: 1.1rem; letter-spacing: 4px; text-decoration: none; 
             background-size: 200% auto; animation: goldFlow 3s linear infinite;
         }
+        .powered-by { font-size: 9px; color: #666; letter-spacing: 2px; text-transform: uppercase; font-weight: 800; }
         
         nav a { 
             color: #fff; text-decoration: none; font-size: 10px; font-weight: 800; 
             text-transform: uppercase; letter-spacing: 1px; cursor: pointer; margin-left: 20px;
         }
+        nav a:hover { color: var(--gold-text); }
 
         .page { display: none; padding: 60px 8%; min-height: 90vh; position: relative; z-index: 1; animation: fadeIn 1s ease; }
         .page.active { display: block; }
@@ -67,26 +69,29 @@
             animation: goldFlow 6s ease infinite;
             color: #000; padding: 50px; border-radius: 8px; 
             box-shadow: 0 0 40px rgba(191, 149, 63, 0.3);
-            position: relative; overflow: hidden;
         }
 
         .grid-2 { display: grid; grid-template-columns: 1.3fr 1fr; gap: 30px; margin-bottom: 40px; }
         .glass-box { background: rgba(15,15,15,0.7); padding: 40px; border-left: 2px solid var(--gold-text); border-radius: 4px; backdrop-filter: blur(10px); }
+        .glass-box h2 { font-family: 'Syncopate'; color: var(--gold-text); font-size: 1.1rem; margin-bottom: 15px; }
+
+        .tag-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 30px; }
+        .tag-item { background: #0f0f0f; padding: 20px; text-align: center; border: 1px solid #222; font-size: 10px; font-weight: 800; text-transform: uppercase; color: #888; }
 
         .price-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
         .price-card { background: var(--card-bg); padding: 60px 30px; text-align: center; border: 1px solid #1a1a1a; transition: 0.4s; }
         .price-card.featured { border: 1px solid #bf953f; box-shadow: 0 0 25px rgba(191, 149, 63, 0.15); }
+        .amt { font-size: 2.2rem; font-weight: 800; margin: 15px 0; color: #fff; }
 
         .gold-btn { 
             background: var(--gold-glossy); background-size: 200% auto; animation: goldFlow 3s linear infinite;
             color: #000; border: none; padding: 18px 45px; font-weight: 900; cursor: pointer; 
             text-transform: uppercase; font-size: 11px; letter-spacing: 2px;
-            box-shadow: 0 5px 20px rgba(191, 149, 63, 0.4);
         }
 
         footer { text-align: center; padding: 60px 0; color: #555; font-size: 10px; font-weight: 800; letter-spacing: 3px; }
 
-        @media (max-width: 900px) { .grid-2, .price-row { grid-template-columns: 1fr; } }
+        @media (max-width: 900px) { .grid-2, .price-row, .tag-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -96,6 +101,7 @@
     <header>
         <div class="logo-area">
             <a onclick="showPage('home')" class="logo">ELITE BUSINESS STUDIO</a>
+            <span class="powered-by">POWERED BY TAISO FITNESS</span>
         </div>
         <nav>
             <a onclick="showPage('home')">The Privilege</a>
@@ -109,10 +115,9 @@
         <section class="hero">
             <p style="color: #888; letter-spacing: 4px; font-size: 12px; margin-bottom: 20px;">NOT A GYM. A STATEMENT.</p>
             <h1>THIS IS NOT A MEMBERSHIP.<br>THIS IS A PRIVILEGE.</h1>
-            <p style="color:var(--gold-text); opacity: 0.9; letter-spacing: 6px; font-weight: 500;">ZERO CROWD • TOTAL PRIVACY • ELITE CLASS ONLY</p>
+            <p style="color:var(--gold-text); opacity: 0.9; letter-spacing: 6px;">ZERO CROWD • TOTAL PRIVACY • ELITE CLASS ONLY</p>
             <button class="gold-btn" onclick="showPage('membership')" style="margin-top: 40px;">Explore The Investment</button>
         </section>
-
         <div class="grid-2">
             <div class="gold-banner">
                 <p style="text-transform: uppercase; font-weight: 800; font-size: 10px; letter-spacing: 2px;">Business Class Lifestyle</p>
@@ -120,42 +125,69 @@
                 <p style="font-weight: 600; font-size: 14px; margin-top: 15px;">Designed for industry leaders who value time and privacy over everything else.</p>
             </div>
             <div class="glass-box">
-                <h2 style="font-family: 'Syncopate'; color: var(--gold-text); font-size: 1.1rem; margin-bottom: 15px;">Total Exclusivity</h2>
-                <p style="color: #aaa; font-size: 14px; line-height: 1.8;">Experience a sanctuary where your status is respected. We guarantee a pristine environment with zero waiting time.</p>
+                <h2>Total Exclusivity</h2>
+                <p style="color: #aaa; font-size: 14px; line-height: 1.8;">We don't just limit the crowd, we eliminate it. Experience a sanctuary where your status is respected and your space is guaranteed.</p>
             </div>
         </div>
     </div>
 
     <div id="facilities" class="page">
-        <h1 style="font-family: 'Syncopate'; background: var(--gold-glossy); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 40px;">FACILITIES</h1>
-        <div class="glass-box">
-            <h2>PRIVATE FLOOR</h2>
-            <p>Access our high-end, imported equipment in a space that is exclusively yours.</p>
+        <h1 style="font-family: 'Syncopate'; background: var(--gold-glossy); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 40px; font-size: 1.4rem;">BUSINESS CLASS EXPERIENCE</h1>
+        <div class="grid-2">
+            <div class="glass-box" style="border-left-color: #333;">
+                <h2 style="color: #fff;">NO NOISE. NO WAITING.</h2>
+                <p style="color: #aaa;">Your water and towels are ready before you arrive. No waiting for machines, no loud noise. Pure performance efficiency.</p>
+            </div>
+            <div class="glass-box">
+                <h2>PRIVATE FLOOR ACCESS</h2>
+                <p style="color: #aaa;">Exclusive floor access ensuring complete security. A pristine environment with imported premium equipment.</p>
+            </div>
+        </div>
+        <div class="tag-grid">
+            <div class="tag-item">Private Lockers</div>
+            <div class="tag-item">Imported Equipment</div>
+            <div class="tag-item">Recovery Suites</div>
+            <div class="tag-item">Infrared Sauna</div>
+            <div class="tag-item">Cold Plunge Pool</div>
+            <div class="tag-item">Zero Crowd Policy</div>
         </div>
     </div>
 
     <div id="coaching" class="page">
-        <h1 style="font-family: 'Syncopate'; color: #fff; margin-bottom: 40px;">ELITE COACHING</h1>
-        <div class="glass-box">
-            <h2>PERSONALIZED RESULTS</h2>
-            <p>World-class trainers who respect your time and privacy.</p>
+        <h1 style="font-family: 'Syncopate'; color: #fff; margin-bottom: 40px; font-size: 1.4rem;">ELITE COACHING</h1>
+        <div class="grid-2">
+            <div class="glass-box">
+                <h2 style="color: var(--gold-text);">PERSONAL ASSISTANT</h2>
+                <p style="color: #aaa;">A dedicated assistant handles your scheduling, preparation, and nutrition, so you focus only on results.</p>
+            </div>
+            <div class="glass-box" style="border-left-color: #fff;">
+                <h2 style="color: #fff;">PRIVATE 1-ON-1</h2>
+                <p style="color: #aaa;">Elite performance specialists providing coaching on a private floor. Zero prying eyes, maximum focus.</p>
+            </div>
+        </div>
+        <div style="background: #111; padding: 40px; border-radius: 8px; border: 1px dashed #333; text-align: center; margin-top: 20px;">
+            <h2 style="color: var(--gold-text); font-family: 'Syncopate'; font-size: 1rem; margin-bottom: 10px;">PRIORITY SCHEDULING</h2>
+            <p style="color: #666; font-size: 13px;">Your time is your greatest asset. We ensure the floor is yours exactly when you need it.</p>
         </div>
     </div>
 
     <div id="membership" class="page">
-        <h1 style="font-family: 'Syncopate'; text-align: center; background: var(--gold-glossy); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 60px;">INVESTMENT</h1>
+        <h1 style="font-family: 'Syncopate'; text-align: center; background: var(--gold-glossy); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 60px; font-size: 1.4rem; letter-spacing: 5px;">THE INVESTMENT</h1>
         <div class="price-row">
             <div class="price-card">
                 <h4 style="color: var(--gold-text);">3 MONTHS</h4>
                 <div class="amt">₹1,00,000</div>
+                <p style="font-size: 10px; color: #555;">ELITE ACCESS</p>
             </div>
             <div class="price-card featured">
                 <h4 style="color: var(--gold-text);">6 MONTHS</h4>
                 <div class="amt">₹1,50,000</div>
+                <p style="color: var(--gold-text); font-size: 10px;">MOST SOUGHT PRIVILEGE</p>
             </div>
             <div class="price-card">
                 <h4 style="color: var(--gold-text);">12 MONTHS</h4>
                 <div class="amt">₹2,40,000</div>
+                <p style="font-size: 10px; color: #555;">ANNUAL EXCLUSIVITY</p>
             </div>
         </div>
     </div>
@@ -181,35 +213,28 @@
         resize();
 
         class Particle {
-            constructor() {
-                this.init();
-            }
+            constructor() { this.init(); }
             init() {
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 1.8 + 0.3; // Random sizes
+                this.size = Math.random() * 1.8 + 0.3;
                 this.speedY = Math.random() * 0.4 - 0.2;
                 this.speedX = Math.random() * 0.4 - 0.2;
                 this.opacity = Math.random() * 0.5 + 0.2;
-                this.twinkle = Math.random() * 0.05; // Twinkle speed
+                this.twinkle = Math.random() * 0.05;
             }
             update() {
                 this.y += this.speedY;
                 this.x += this.speedX;
                 this.opacity += this.twinkle;
-                
-                // Twinkle effect: oscillate opacity
-                if (this.opacity > 0.8 || this.opacity < 0.2) {
-                    this.twinkle = -this.twinkle;
-                }
-
+                if (this.opacity > 0.8 || this.opacity < 0.2) this.twinkle = -this.twinkle;
                 if (this.y < 0) this.y = canvas.height;
                 if (this.y > canvas.height) this.y = 0;
                 if (this.x < 0) this.x = canvas.width;
                 if (this.x > canvas.width) this.x = 0;
             }
             draw() {
-                ctx.fillStyle = `rgba(255, 246, 186, ${this.opacity})`; // Brighter gold/white sparkle
+                ctx.fillStyle = `rgba(255, 246, 186, ${this.opacity})`;
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fill();
@@ -218,18 +243,11 @@
 
         function setup() {
             particles = [];
-            // INCREASED COUNT TO 200 FOR MORE SPARKLES
-            for (let i = 0; i < 200; i++) {
-                particles.push(new Particle());
-            }
+            for (let i = 0; i < 200; i++) particles.push(new Particle());
         }
-
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => {
-                p.update();
-                p.draw();
-            });
+            particles.forEach(p => { p.update(); p.draw(); });
             requestAnimationFrame(animate);
         }
         setup();
