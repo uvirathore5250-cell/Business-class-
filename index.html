@@ -8,12 +8,12 @@
         @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Montserrat:wght@300;500;800&display=swap');
 
         :root {
-            /* Glossy Metallic Gold Gradient */
+            /* Pure Glossy Metallic Gold Gradient */
             --gold-glossy: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
-            --gold-text: #e1b382; /* Deep Gold for readability */
+            --gold-text: #e1b382;
+            --silver-glossy: linear-gradient(135deg, #757575, #ffffff, #9e9e9e, #eeeeee, #616161);
             --deep-black: #000000;
             --card-bg: #0a0a0a;
-            --neon: #92d050;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -57,13 +57,13 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* Page Transitions */
+        /* Transitions */
         .page { display: none; padding: 60px 8%; min-height: 90vh; animation: fadeIn 0.8s ease; }
         .page.active { display: block; }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Hero (Home) */
+        /* Hero */
         .hero { text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; height: 65vh; }
         .hero h1 { 
             font-family: 'Syncopate', sans-serif; 
@@ -75,9 +75,10 @@
         }
         .hero p { color: #888; letter-spacing: 4px; font-weight: 500; margin-bottom: 30px; font-size: 12px; }
 
-        /* Layout Grids */
+        /* Grids */
         .grid-2 { display: grid; grid-template-columns: 1.3fr 1fr; gap: 30px; margin-bottom: 40px; }
-        .glass-box { background: var(--card-bg); padding: 40px; border-left: 2px solid var(--gold-text); border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .glass-box { background: var(--card-bg); padding: 40px; border-left: 2px solid #333; border-radius: 4px; transition: 0.3s; }
+        .glass-box:hover { border-left-color: var(--gold-text); }
         .glass-box h2 { 
             background: var(--gold-glossy);
             -webkit-background-clip: text;
@@ -89,31 +90,23 @@
         .gold-banner {
             background: var(--gold-glossy);
             color: #000; padding: 50px; border-radius: 8px; 
-            box-shadow: 0 20px 50px rgba(191, 149, 63, 0.3);
+            box-shadow: 0 20px 50px rgba(191, 149, 63, 0.2);
             position: relative; overflow: hidden;
         }
-        /* Shine effect */
-        .gold-banner::after {
-            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
-            transform: rotate(45deg); animation: shine 4s infinite;
-        }
-        @keyframes shine { 0% { left: -100%; } 100% { left: 100%; } }
-
         .gold-banner h2 { font-size: 1.8rem; font-weight: 900; letter-spacing: -1px; margin: 10px 0; line-height: 1.1; }
 
-        /* Pricing Section */
+        /* Pricing */
         .price-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
         .price-card { background: var(--card-bg); padding: 60px 30px; text-align: center; border-bottom: 4px solid #222; transition: 0.4s; }
         .price-card:hover { border-bottom-color: #aa771c; transform: translateY(-10px); }
-        .price-card.featured { border-bottom: 4px solid #aa771c; transform: scale(1.03); background: #111; }
+        .price-card.featured { border-bottom: 4px solid #aa771c; background: #111; }
         .price-card h4 { 
             background: var(--gold-glossy);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             letter-spacing: 3px; font-size: 11px; margin-bottom: 15px; font-weight: 800; 
         }
-        .price-card .amt { font-size: 2.2rem; font-weight: 800; margin-bottom: 10px; font-family: sans-serif; color: #fff; }
+        .price-card .amt { font-size: 2.2rem; font-weight: 800; margin-bottom: 10px; color: #fff; }
 
         .gold-btn { 
             background: var(--gold-glossy); 
@@ -122,11 +115,10 @@
             margin-top: 20px; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(191, 149, 63, 0.4);
             transition: 0.3s;
         }
-        .gold-btn:hover { transform: scale(1.05); filter: brightness(1.2); }
+        .gold-btn:hover { filter: brightness(1.2); transform: scale(1.02); }
 
         .tag-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 30px; }
         .tag-item { background: #0f0f0f; padding: 20px; text-align: center; border: 1px solid #222; font-size: 10px; font-weight: 800; text-transform: uppercase; color: #888; }
-        .tag-item:hover { border-color: var(--gold-text); color: var(--gold-text); }
 
         footer { text-align: center; padding: 80px 0; color: #444; font-size: 10px; font-weight: 800; letter-spacing: 3px; }
 
@@ -152,7 +144,7 @@
         <section class="hero">
             <p>NOT A GYM. A STATEMENT.</p>
             <h1>THIS IS NOT A MEMBERSHIP.<br>THIS IS A PRIVILEGE.</h1>
-            <p style="color:var(--gold-text); opacity: 0.9;">ZERO CROWD • TOTAL PRIVACY • ELITE CLASS ONLY</p>
+            <p style="color:var(--gold-text); opacity: 0.9; letter-spacing: 6px;">ZERO CROWD • TOTAL PRIVACY • ELITE CLASS ONLY</p>
             <button class="gold-btn" onclick="showPage('membership')">Explore The Investment</button>
         </section>
 
@@ -162,7 +154,7 @@
                 <h2>LUXURY. PRIVATE. POWERFUL.</h2>
                 <p style="font-weight: 600; font-size: 13px; margin-top: 10px;">Designed for industry leaders who value time and privacy over everything else.</p>
             </div>
-            <div class="glass-box">
+            <div class="glass-box" style="border-left-color: var(--gold-text);">
                 <h2>Total Exclusivity</h2>
                 <p>We don't just limit the crowd, we eliminate it. Experience a sanctuary where your status is respected and your space is guaranteed.</p>
             </div>
@@ -172,11 +164,11 @@
     <div id="facilities" class="page">
         <h1 style="font-family: 'Syncopate'; background: var(--gold-glossy); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 40px; font-size: 1.4rem; letter-spacing: 3px;">BUSINESS CLASS EXPERIENCE</h1>
         <div class="grid-2">
-            <div class="glass-box" style="border-left-color: #555;">
+            <div class="glass-box">
                 <h2>NO NOISE. NO WAITING.</h2>
                 <p>Your water and towels are ready before you arrive. No waiting for machines, no loud noise. Pure performance efficiency.</p>
             </div>
-            <div class="glass-box">
+            <div class="glass-box" style="border-left-color: var(--gold-text);">
                 <h2>PRIVATE FLOOR ACCESS</h2>
                 <p>Exclusive floor access ensuring complete security. A pristine environment with imported premium equipment.</p>
             </div>
@@ -192,19 +184,19 @@
     </div>
 
     <div id="coaching" class="page">
-        <h1 style="font-family: 'Syncopate'; color: var(--neon); margin-bottom: 40px; font-size: 1.4rem; letter-spacing: 3px;">ELITE COACHING</h1>
+        <h1 style="font-family: 'Syncopate'; background: var(--silver-glossy); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 40px; font-size: 1.4rem; letter-spacing: 3px;">ELITE COACHING</h1>
         <div class="grid-2">
-            <div class="glass-box" style="border-left-color: var(--neon);">
-                <h2 style="color: var(--neon);">PERSONAL ASSISTANT</h2>
+            <div class="glass-box" style="border-left: 2px solid #fff;">
+                <h2 style="background: var(--silver-glossy); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">PERSONAL ASSISTANT</h2>
                 <p>A dedicated assistant handles your scheduling, preparation, and nutrition, so you focus only on results.</p>
             </div>
-            <div class="glass-box" style="border-left-color: var(--neon);">
-                <h2 style="color: var(--neon);">PRIVATE 1-ON-1</h2>
+            <div class="glass-box" style="border-left: 2px solid #fff;">
+                <h2 style="background: var(--silver-glossy); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">PRIVATE 1-ON-1</h2>
                 <p>Elite performance specialists providing coaching on a private floor. Zero prying eyes, maximum focus.</p>
             </div>
         </div>
-        <div style="background: #111; padding: 40px; border-radius: 8px; border: 1px dashed #333; text-align: center;">
-            <h2 style="color: var(--neon); font-family: 'Syncopate'; font-size: 1rem; margin-bottom: 10px;">PRIORITY SCHEDULING</h2>
+        <div style="background: #111; padding: 40px; border-radius: 8px; border: 1px solid #333; text-align: center;">
+            <h2 style="background: var(--silver-glossy); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-family: 'Syncopate'; font-size: 1rem; margin-bottom: 10px;">PRIORITY SCHEDULING</h2>
             <p style="color: #666; font-size: 13px;">Your time is your greatest asset. We ensure the floor is yours exactly when you need it.</p>
         </div>
     </div>
