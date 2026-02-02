@@ -34,16 +34,35 @@
             border-bottom: 1px solid #1a1a1a; position: sticky; top: 0; z-index: 1000;
             backdrop-filter: blur(15px);
         }
-        .logo-area { display: flex; flex-direction: column; }
+
+        /* --- TITLE ENTRANCE ANIMATION --- */
+        .logo-area { display: flex; flex-direction: column; overflow: hidden; }
+        
         .logo { 
             font-family: 'Syncopate', sans-serif; 
             background: var(--gold-glossy);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             font-size: 1.1rem; letter-spacing: 4px; text-decoration: none; 
-            background-size: 200% auto; animation: goldFlow 3s linear infinite;
+            background-size: 200% auto; 
+            
+            /* Initial state for animation */
+            display: inline-block;
+            animation: 
+                titleFlow 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards, 
+                goldFlow 3s linear infinite;
         }
-        .powered-by { font-size: 9px; color: #666; letter-spacing: 2px; text-transform: uppercase; font-weight: 800; }
+
+        @keyframes titleFlow {
+            0% { transform: translateX(-100%); opacity: 0; letter-spacing: 20px; filter: blur(10px); }
+            100% { transform: translateX(0); opacity: 1; letter-spacing: 4px; filter: blur(0); }
+        }
+
+        .powered-by { 
+            font-size: 9px; color: #666; letter-spacing: 2px; text-transform: uppercase; font-weight: 800;
+            animation: fadeIn 2s ease forwards; animation-delay: 1s; opacity: 0;
+        }
         
+        /* --- NAVIGATION --- */
         nav a { 
             color: #fff; text-decoration: none; font-size: 10px; font-weight: 800; 
             text-transform: uppercase; letter-spacing: 1px; cursor: pointer; margin-left: 20px;
@@ -53,9 +72,10 @@
         .page { display: none; padding: 60px 8%; min-height: 90vh; position: relative; z-index: 1; animation: fadeIn 1s ease; }
         .page.active { display: block; }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes goldFlow { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
 
+        /* --- HERO --- */
         .hero { text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; height: 60vh; }
         .hero h1 { 
             font-family: 'Syncopate', sans-serif; font-size: clamp(1.4rem, 5vw, 2.8rem); 
