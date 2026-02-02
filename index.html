@@ -35,21 +35,15 @@
             backdrop-filter: blur(15px);
         }
 
-        /* --- TITLE ENTRANCE ANIMATION --- */
         .logo-area { display: flex; flex-direction: column; overflow: hidden; }
-        
         .logo { 
             font-family: 'Syncopate', sans-serif; 
             background: var(--gold-glossy);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             font-size: 1.1rem; letter-spacing: 4px; text-decoration: none; 
             background-size: 200% auto; 
-            
-            /* Initial state for animation */
             display: inline-block;
-            animation: 
-                titleFlow 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards, 
-                goldFlow 3s linear infinite;
+            animation: titleFlow 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards, goldFlow 3s linear infinite;
         }
 
         @keyframes titleFlow {
@@ -62,12 +56,10 @@
             animation: fadeIn 2s ease forwards; animation-delay: 1s; opacity: 0;
         }
         
-        /* --- NAVIGATION --- */
         nav a { 
             color: #fff; text-decoration: none; font-size: 10px; font-weight: 800; 
             text-transform: uppercase; letter-spacing: 1px; cursor: pointer; margin-left: 20px;
         }
-        nav a:hover { color: var(--gold-text); }
 
         .page { display: none; padding: 60px 8%; min-height: 90vh; position: relative; z-index: 1; animation: fadeIn 1s ease; }
         .page.active { display: block; }
@@ -75,7 +67,6 @@
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes goldFlow { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
 
-        /* --- HERO --- */
         .hero { text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; height: 60vh; }
         .hero h1 { 
             font-family: 'Syncopate', sans-serif; font-size: clamp(1.4rem, 5vw, 2.8rem); 
@@ -100,7 +91,6 @@
 
         .price-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
         .price-card { background: var(--card-bg); padding: 60px 30px; text-align: center; border: 1px solid #1a1a1a; transition: 0.4s; }
-        .price-card.featured { border: 1px solid #bf953f; box-shadow: 0 0 25px rgba(191, 149, 63, 0.15); }
         .amt { font-size: 2.2rem; font-weight: 800; margin: 15px 0; color: #fff; }
 
         .gold-btn { 
@@ -167,9 +157,7 @@
             <div class="tag-item">Private Lockers</div>
             <div class="tag-item">Imported Equipment</div>
             <div class="tag-item">Recovery Suites</div>
-            <div class="tag-item">Infrared Sauna</div>
-            <div class="tag-item">Cold Plunge Pool</div>
-            <div class="tag-item">Zero Crowd Policy</div>
+            <div class="tag-item">Steam & Hot Water</div> <div class="tag-item">Ice Bath</div> <div class="tag-item">Zero Crowd Policy</div>
         </div>
     </div>
 
@@ -185,10 +173,6 @@
                 <p style="color: #aaa;">Elite performance specialists providing coaching on a private floor. Zero prying eyes, maximum focus.</p>
             </div>
         </div>
-        <div style="background: #111; padding: 40px; border-radius: 8px; border: 1px dashed #333; text-align: center; margin-top: 20px;">
-            <h2 style="color: var(--gold-text); font-family: 'Syncopate'; font-size: 1rem; margin-bottom: 10px;">PRIORITY SCHEDULING</h2>
-            <p style="color: #666; font-size: 13px;">Your time is your greatest asset. We ensure the floor is yours exactly when you need it.</p>
-        </div>
     </div>
 
     <div id="membership" class="page">
@@ -197,17 +181,14 @@
             <div class="price-card">
                 <h4 style="color: var(--gold-text);">3 MONTHS</h4>
                 <div class="amt">₹1,00,000</div>
-                <p style="font-size: 10px; color: #555;">ELITE ACCESS</p>
             </div>
-            <div class="price-card featured">
+            <div class="price-card" style="border: 1px solid #bf953f;">
                 <h4 style="color: var(--gold-text);">6 MONTHS</h4>
                 <div class="amt">₹1,50,000</div>
-                <p style="color: var(--gold-text); font-size: 10px;">MOST SOUGHT PRIVILEGE</p>
             </div>
             <div class="price-card">
                 <h4 style="color: var(--gold-text);">12 MONTHS</h4>
                 <div class="amt">₹2,40,000</div>
-                <p style="font-size: 10px; color: #555;">ANNUAL EXCLUSIVITY</p>
             </div>
         </div>
     </div>
